@@ -1,5 +1,7 @@
 import { ToDoList } from "./script.js"
-// import { CreateElement } from "./html-element-creator"
+import { toggleTheme } from "./toggle-theme.js"
 
 let toDoList = new ToDoList()
 toDoList.render()
+
+toggleTheme()

@@ -1,9 +1,6 @@
 @import "normalize.scss";
-@import "mixins.scss";
 
 @import url(https://fonts.googleapis.com/css?family=Lato:regular,700&display=swap);
-
-
 
 body {
 	margin: 0;
@@ -11,6 +8,15 @@ body {
 	font-family: "Lato", sans-serif;
 	font-size: 16px;
 	line-height: 1.5;
+	background-color: #ffffff;
+	color: #000000;
+}
+
+body {
+	&.dark-theme {
+		background-color: #333333;
+		color: #ffffff;
+	}
 }
 
 *[class*="__container"] {
@@ -140,7 +146,6 @@ li {
 	}
 	font-size: 20px;
 	input {
-
 		padding: 10px;
 		border: 2px solid #ccc;
 		border-radius: 4px;
@@ -185,24 +190,6 @@ li {
 	}
 }
 
-// .text-div {
-// 	input[type="text"] {
-// 		display: none;
-// 	}
-// }
-
-// .text-div {
-// 	&.editMode input[type="text"] {
-// 		display: block;
-// 	}
-// }
-
-// .text-div {
-// 	&.editMode label {
-// 		display: none;
-// 	}
-// }
-
 ul li input[type="text"] {
 	display: none;
 }
@@ -222,4 +209,35 @@ label {
 
 li input {
 	line-height: 1.5;
+}
+
+.toggle-theme {
+	&__container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		max-width: 500px;
+	}
+}
+.toggle-theme-button {
+	padding: 10px 20px;
+	background-color: #ffffff;
+	color: #000000;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	border: 1px solid black;
+}
+
+.toggle-theme-button:hover {
+	background-color: #ebebeb;
+}
+
+.toggle-theme-button {
+	&.dark-theme {
+		background-color: #333333;
+		color: #ffffff;
+		border: 1px solid white;
+	}
 }

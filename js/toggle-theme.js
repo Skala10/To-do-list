@@ -1,7 +1,9 @@
-
-function toggleTheme() {
-  let toggleThemeButton = document.querySelector(".toggle-theme")
+export function toggleTheme() {
+  let toggleThemeButton = document.querySelector(".toggle-theme-button")
+  let body = document.body
+  let button = document.querySelector(".toggle-theme-button")
   toggleThemeButton.addEventListener("click", () => {
-    document.body.classList.toggle("dark-theme")
+    body.classList.toggle("dark-theme")
+    button.classList.toggle("dark-theme")
   })
 }

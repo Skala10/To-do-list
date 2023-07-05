@@ -57,6 +57,13 @@ body {
   font-family: "Lato", sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark-theme {
+  background-color: #333333;
+  color: #ffffff;
 }
 
 *[class*=__container] {
@@ -266,4 +273,41 @@ label {
 
 li input {
   line-height: 1.5;
+}
+
+.toggle-theme__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  max-width: 500px;
+}
+
+.toggle-theme-button {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  border: 1px solid black;
+}
+
+.toggle-theme-button:hover {
+  background-color: #ebebeb;
+}
+
+.toggle-theme-button.dark-theme {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid white;
 }

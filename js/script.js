@@ -1,4 +1,5 @@
 import { ElementCreator } from "./html-element-creator.js"
+
 export class ToDoList {
   constructor() {}
 
@@ -99,17 +100,17 @@ export class ToDoList {
     return li
   }
 
-  incompletedTasks() {
+  addTask() {
     let incompletedTask = document.querySelector(".incompleted-task")
     let newTask = this.getTextFromMainInput()
-    let newElement = this.createElement(newTask)
-    incompletedTask.append(newElement)
+      let newElement = this.createElement(newTask)
+      incompletedTask.append(newElement)
   }
 
   render() {
     let addButton = document.querySelector(".add-item__button")
     addButton.addEventListener("click", () => {
-      this.incompletedTasks()
+      this.addTask()
       this.clearInput()
     })
   }
