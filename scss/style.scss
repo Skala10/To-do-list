@@ -1,0 +1,223 @@
+@import "normalize.scss";
+@import "mixins.scss";
+
+@import url(https://fonts.googleapis.com/css?family=Lato:regular,700&display=swap);
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Lato", sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+*[class*="__container"] {
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.wrapper {
+}
+.to-do-list {
+	&__container {
+		display: flex;
+		flex-direction: column;
+		max-width: 500px;
+	}
+
+	&__add-item {
+	}
+
+	&__todo {
+	}
+
+	&__completed {
+	}
+}
+.add-item {
+	&__title {
+	}
+
+	&__input-wrapper {
+		display: flex;
+		flex-direction: row;
+		margin-top: 10px;
+	}
+	&__input {
+		width: 100%;
+		padding: 10px;
+		border: 2px solid #ccc;
+		border-radius: 4px;
+		font-size: 20px;
+		color: rgb(31, 30, 30);
+		transition: all 0.3s ease 0s;
+		&:focus {
+			color: #000;
+			outline: none;
+		}
+	}
+
+	&__button {
+		padding: 0 10px;
+		font-size: 20px;
+		cursor: pointer;
+		transition: color 0.3s ease 0s;
+		&:hover {
+			color: rgb(20, 138, 20);
+		}
+	}
+}
+
+.todo {
+	&__title {
+	}
+	&__wrapper {
+	}
+}
+.completed {
+	&__title {
+	}
+	&__wrapper {
+	}
+}
+
+.title {
+	font-size: 24px;
+	position: relative;
+	text-transform: uppercase;
+	padding-bottom: 10px;
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+		height: 2px;
+		width: 100%;
+		background-color: #000;
+		border-radius: 1px;
+	}
+}
+
+.to-do-list__div {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	&:not(:first-child) {
+		margin-top: 10px;
+	}
+}
+
+.edit {
+	padding: 0 5px;
+	font-size: 20px;
+	cursor: pointer;
+	transition: color 0.3s ease 0s;
+	&:hover {
+		color: rgb(3, 1, 125);
+	}
+}
+
+.delete {
+	padding: 0 5px;
+	font-size: 20px;
+	cursor: pointer;
+	transition: color 0.3s ease 0s;
+	&:hover {
+		color: rgb(237, 41, 41);
+	}
+}
+
+li {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 10px;
+	& > *:not(:last-child) {
+		padding-right: 5px;
+	}
+	font-size: 20px;
+	input {
+
+		padding: 10px;
+		border: 2px solid #ccc;
+		border-radius: 4px;
+		font-size: 20px;
+		opacity: 0.8;
+		transition: all 0.3s ease 0s;
+		&:focus {
+			opacity: 1;
+			outline: none;
+		}
+	}
+}
+
+.button-div {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.text-div {
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+}
+
+.new-task {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 25px 5px;
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+		height: 0.5px;
+		width: 100%;
+		background-color: rgb(113, 109, 109);
+		border-radius: 1px;
+	}
+}
+
+// .text-div {
+// 	input[type="text"] {
+// 		display: none;
+// 	}
+// }
+
+// .text-div {
+// 	&.editMode input[type="text"] {
+// 		display: block;
+// 	}
+// }
+
+// .text-div {
+// 	&.editMode label {
+// 		display: none;
+// 	}
+// }
+
+ul li input[type="text"] {
+	display: none;
+}
+
+ul li.editMode input[type="text"] {
+	display: block;
+}
+
+ul li.editMode label {
+	display: none;
+}
+
+label {
+	padding: 10px;
+	border: 2px solid transparent;
+}
+
+li input {
+	line-height: 1.5;
+}

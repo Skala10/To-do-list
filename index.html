@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>To do list</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="to-do-list__container to-do-list">
+        <div class="to-do-list__add-item add-item to-do-list__div">
+          <label class="add-item__title title">add item</label>
+          <div class="add-item__input-wrapper div-wrapper">
+            <input class="add-item__input" type="text" value="" />
+            <button class="add-item__button">Add</button>
+          </div>
+        </div>
+        <div class="to-do-list__todo todo to-do-list__div">
+          <label for="" class="todo__title title">todo</label>
+          <ul class="todo__wrapper div-wrapper incompleted-task"></ul>
+        </div>
+        <div class="to-do-list__completed completed to-do-list__div">
+          <label for="" class="completed__title title">completed</label>
+          <ul class="completed__wrapper div-wrapper completed-task"></ul>
+        </div>
+      </div>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
