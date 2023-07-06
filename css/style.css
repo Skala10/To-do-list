@@ -61,6 +61,11 @@ body {
   color: #000000;
 }
 
+body {
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
 body.dark-theme {
   background-color: #333333;
   color: #ffffff;
@@ -102,7 +107,9 @@ body.dark-theme input {
   border-radius: 4px;
   font-size: 20px;
   color: rgb(31, 30, 30);
-  
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 .add-item__button {
   padding: 0 10px;
@@ -294,6 +301,9 @@ li input {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
   border: 1px solid black;
 }
 
