@@ -1,24 +1,112 @@
-import { ElementCreator } from "./html-element-creator.js"
-
 export class ToDoList {
-  constructor() {}
-
-  getTextFromMainInput() {
-    let newTask = document.querySelector(".add-item__input").value
-    return newTask
+  constructor() {
+    this.text = document.querySelector(".add-item__input")
+    this.addTaskButton = document.querySelector(".add-item__button")
+    this.listBox = document.querySelector(".incompleted-task")
+    this.listBoxCompleted = document.querySelector(".completed-task")
+    this.todoArray = []
+    this.updateTodoList()
   }
 
-  clearInput() {
-    document.querySelector(".add-item__input").value = ""
+  addNewTask(e) {
+    e.preventDefault()
+    let todo = localStorage.getItem("todo")
+    if (todo === null) {
+      this.todoArray = []
+    } else {
+      this.todoArray = JSON.parse(todo)
+    }
+    if (this.text.value.trim() !== "") {
+      this.todoArray.push({ text: this.text.value, completed: false })
+      this.text.value = ""
+      localStorage.setItem("todo", JSON.stringify(this.todoArray))
+      this.updateTodoList()
+    }
   }
 
-  toggleEdit(event) {
-    let listItem = event.target.closest(".new-task")
-    let editInput = listItem.querySelector("input[type=text]")
-    let label = listItem.querySelector("label")
-    let containsClass = listItem.classList.contains("editMode")
-    label.innerText = containsClass ? editInput.value : label.innerText
-    editInput.value = containsClass ? editInput.value : label.innerText
+  updateTodoList() {
+    let todo = localStorage.getItem("todo")
+    if (todo === null) {
+      this.todoArray = []
+    } else {
+      this.todoArray = JSON.parse(todo)
+    }
+    let htmlCode = ""
+    let htmlCodeCompleted = ""
+    this.todoArray.forEach((list, ind) => {
+      if (list.completed) {
+        htmlCodeCompleted += `<li class="new-task">
+         <div class="text-div">
+         <input type="checkbox" checked>
+         <label style="text-decoration: line-through;">${list.text}</label>
+         <input type="text" value="${list.text}">
+         </div>
+         <div class="button-div">
+         <button class="edit" data-index="${ind}">Edit</button>
+         <button class="delete" data-index="${ind}">Delete</button>
+         </div></li>`
+      } else {
+        htmlCode += `<li class="new-task">
+         <div class="text-div">
+         <input type="checkbox">
+         <label>${list.text}</label>
+         <input type="text" value="${list.text}">
+         </div>
+         <div class="button-div">
+         <button class="edit" data-index="${ind}">Edit</button>
+         <button class="delete" data-index="${ind}">Delete</button>
+         </div></li>`
+      }
+    })
+    this.listBox.innerHTML = htmlCode
+    this.listBoxCompleted.innerHTML = htmlCodeCompleted
+
+    const editButtons = document.querySelectorAll(".edit")
+    const deleteButtons = document.querySelectorAll(".delete")
+    const checkBoxes = document.querySelectorAll("input[type=checkbox]")
+    editButtons.forEach((button) => {
+      button.addEventListener("click", ({ target }) => {
+        const index = target.dataset.index
+        this.edit(index, target)
+      })
+    })
+
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", ({ target }) => {
+        const index = target.dataset.index
+        this.deleteTodo(index)
+      })
+    })
+
+    checkBoxes.forEach((checkBox) => {
+      checkBox.addEventListener("change", (e) => {
+        this.toggleChecked(e)
+      })
+    })
+  }
+
+  deleteTodo(index) {
+    let todo = localStorage.getItem("todo")
+    this.todoArray = JSON.parse(todo)
+    this.todoArray.splice(index, 1)
+    localStorage.setItem("todo", JSON.stringify(this.todoArray))
+    this.updateTodoList()
+  }
+
+  edit(index, target) {
+    let todo = localStorage.getItem("todo")
+    this.todoArray = JSON.parse(todo)
+    const listItem = target.closest(".new-task")
+    const editInput = listItem.querySelector("input[type=text]")
+    const label = listItem.querySelector("label")
+    const containsClass = listItem.classList.contains("editMode")
+    if (containsClass) {
+      label.textContent = editInput.value
+      this.todoArray[index].text = editInput.value
+      localStorage.setItem("todo", JSON.stringify(this.todoArray))
+    } else {
+      editInput.value = label.textContent
+    }
     listItem.classList.toggle("editMode")
   }
 
@@ -26,92 +114,27 @@ export class ToDoList {
     let listItem = event.target.closest(".new-task")
     let editInput = listItem.querySelector("label")
     let checkInput = listItem.querySelector("input[type=checkbox]")
-    let completedTask = document.querySelector(".completed-task")
-    let incompletedTask = document.querySelector(".incompleted-task")
+    let index = Array.from(listItem.parentNode.children).indexOf(listItem)
 
     if (checkInput.checked) {
       editInput.style.textDecoration = "line-through"
-      completedTask.append(listItem)
+      this.listBoxCompleted.append(listItem)
+      this.todoArray[index].completed = true
+      localStorage.setItem("todo", JSON.stringify(this.todoArray))
     } else {
-      incompletedTask.append(listItem)
+      this.listBox.append(listItem)
       editInput.style.textDecoration = "none"
+      this.todoArray[index].completed = false
+      localStorage.setItem("todo", JSON.stringify(this.todoArray))
     }
   }
 
-  deleteTask(event) {
-    let listItem = event.target.closest(".new-task")
-    listItem.remove()
-  }
-
-  createElement(newTask) {
-    let li = ElementCreator.createHTMLElement({
-      tag: "li",
-      attrs: { class: "new-task" },
-    })
-
-    let textDiv = ElementCreator.createHTMLElement({
-      tag: "div",
-      attrs: { class: "text-div" },
-    })
-
-    let inputCheckbox = ElementCreator.createHTMLElement({
-      tag: "input",
-      attrs: { type: "checkbox" },
-      events: { change: this.toggleChecked.bind(this) },
-    })
-
-    let label = ElementCreator.createHTMLElement({
-      tag: "label",
-      props: { textContent: newTask },
-    })
-
-    let inputText = ElementCreator.createHTMLElement({
-      tag: "input",
-      attrs: { type: "text", value: newTask },
-    })
-
-    let buttonDiv = ElementCreator.createHTMLElement({
-      tag: "div",
-      attrs: { class: "button-div" },
-    })
-
-    let editButton = ElementCreator.createHTMLElement({
-      tag: "button",
-      props: { textContent: "Edit" },
-      attrs: { class: "edit" },
-      events: { click: this.toggleEdit.bind(this) },
-    })
-
-    let deleteButton = ElementCreator.createHTMLElement({
-      tag: "button",
-      props: { textContent: "Delete" },
-      attrs: { class: "delete" },
-      events: { click: this.deleteTask.bind(this) },
-    })
-
-    li.append(textDiv)
-    li.append(buttonDiv)
-    textDiv.append(inputCheckbox)
-    textDiv.append(label)
-    textDiv.append(inputText)
-    buttonDiv.append(editButton)
-    buttonDiv.append(deleteButton)
-
-    return li
-  }
-
-  addTask() {
-    let incompletedTask = document.querySelector(".incompleted-task")
-    let newTask = this.getTextFromMainInput()
-      let newElement = this.createElement(newTask)
-      incompletedTask.append(newElement)
-  }
-
   render() {
-    let addButton = document.querySelector(".add-item__button")
-    addButton.addEventListener("click", () => {
-      this.addTask()
-      this.clearInput()
+    this.addTaskButton.addEventListener("click", (e) => {
+      this.addNewTask(e)
     })
   }
 }
+
+const todoList = new ToDoList()
+todoList.render()

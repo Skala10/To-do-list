@@ -16,6 +16,10 @@ body {
 	&.dark-theme {
 		background-color: #333333;
 		color: #ffffff;
+		input {
+			color: #ffffff;
+			background-color: #333333;
+		}
 	}
 }
 
@@ -59,10 +63,6 @@ body {
 		font-size: 20px;
 		color: rgb(31, 30, 30);
 		transition: all 0.3s ease 0s;
-		&:focus {
-			color: #000;
-			outline: none;
-		}
 	}
 
 	&__button {
