@@ -294,9 +294,6 @@ li input {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  -webkit-transition: background-color 0.3s ease;
-  -o-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
   border: 1px solid black;
 }
 
