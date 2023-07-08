@@ -61,6 +61,11 @@ body {
   color: #000000;
 }
 
+body {
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
 body.dark-theme {
   background-color: #333333;
   color: #ffffff;
@@ -102,6 +107,9 @@ body.dark-theme input {
   border-radius: 4px;
   font-size: 20px;
   color: rgb(31, 30, 30);
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 .add-item__button {
   padding: 0 10px;
@@ -238,6 +246,9 @@ li input:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 25px 5px;
 }
 .new-task::after {
@@ -293,6 +304,9 @@ li input {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
   border: 1px solid black;
 }
 

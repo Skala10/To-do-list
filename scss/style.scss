@@ -13,6 +13,7 @@ body {
 }
 
 body {
+	transition: all 0.3s ease 0s;
 	&.dark-theme {
 		background-color: #333333;
 		color: #ffffff;
@@ -62,6 +63,7 @@ body {
 		border-radius: 4px;
 		font-size: 20px;
 		color: rgb(31, 30, 30);
+		transition: all 0.3s ease 0s;
 	}
 
 	&__button {
@@ -175,6 +177,7 @@ li {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 	padding: 25px 5px;
 
 	&::after {
@@ -225,6 +228,7 @@ li input {
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	transition: background-color 0.3s ease;
 	border: 1px solid black;
 }
 
