@@ -2,7 +2,9 @@
 
 Good looking to-do-list with big functionality. 
 
-Demo: https://skala10.github.io/to-do-list/
+# Project demo: 
+
+https://skala10.github.io/to-do-list/
 
 ## Features
 
