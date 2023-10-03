@@ -4,7 +4,7 @@ Good looking to-do-list with big functionality.
 
 # Demo: 
 
-https://skala10.github.io/to-do-list/
+https://skala10.github.io/to-do-list-js/
 
 ## Features
 
