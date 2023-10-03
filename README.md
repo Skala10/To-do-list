@@ -2,9 +2,7 @@
 
 Good looking to-do-list with big functionality. 
 
-# Demo: 
-
-https://skala10.github.io/to-do-list/
+Demo: https://skala10.github.io/to-do-list/
 
 ## Features
 
@@ -12,7 +10,7 @@ https://skala10.github.io/to-do-list/
 - Feature 2: edit item name
 - Feature 3: move to competed list
 - Feature 4: implement toggle theme
-- Feature 5: safe changes in local storage
+- Feature 5: saмe changes in local storage
 
 
 ## Technologies
